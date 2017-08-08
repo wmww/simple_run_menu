@@ -13,3 +13,14 @@ def is_file_executable(path):
 	if not mode & executable:
 		return False
 	return True
+
+def get_files_in_dir(directory):
+	if directory == '':
+		directory = '.'
+	if directory[-1] != '/':
+		directory += '/'
+	return [directory + i for i in os.listdir(directory)]
+
+if __name__ == "__main__":
+	print(get_files_in_dir(''))
+	
