@@ -6,9 +6,9 @@ import stat
 
 def is_file_executable(path):
 	executable = stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH
-	if not os.path.isfile(filename):
+	if not os.path.isfile(path):
 		return False
-	st = os.stat(filename)
+	st = os.stat(path)
 	mode = st.st_mode
 	if not mode & executable:
 		return False
@@ -22,5 +22,5 @@ def get_files_in_dir(directory):
 	return [directory + i for i in os.listdir(directory)]
 
 if __name__ == "__main__":
-	print(get_files_in_dir(''))
+	print([i for i in get_files_in_dir('') if is_file_executable(i)])
 	
